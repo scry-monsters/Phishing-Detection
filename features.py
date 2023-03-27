@@ -6,7 +6,6 @@ import socket
 import requests
 from googlesearch import search
 import whois
-from dateutil.parser import parse as date_parse
 from urllib.parse import urlparse
 
 
@@ -386,7 +385,7 @@ class getFeatures:
             except:
                 pass
 
-            today = date.today()
+            today = self.date.today()
             age = (today.year-creation_date.year) * \
                 12+(today.month-creation_date.month)
             if age >= 6:
@@ -405,7 +404,7 @@ class getFeatures:
             except:
                 pass
 
-            today = date.today()
+            today = self.date.today()
             age = (today.year-creation_date.year) * \
                 12+(today.month-creation_date.month)
             if age >= 6:
