@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/>
+
+		<link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" />
+		<title>Phishing Detection</title>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="row main">
+				<div
+					class="form1 col-md-6 col-12 d-flex flex-column align-items-center justify-content-around"
+					id="form1"
+				>
+					<h2 class="text-center pt-4 text-dark">PHISHING DETECTION</h2>
+					<br />
+					<form action="/" method="post">
+						<input
+							type="text"
+							class="form__input"
+							name="url"
+							id="url"
+							placeholder="Enter URL"
+							required
+						/>
+						<button class="form1__button" role="button">Analyze</button>
+					</form>
+				</div>
+
+				<div
+					class="form2 col-md-6 col-12 flex-column align-items-center"
+					id="form2"
+				>
+					<h2 class="text-dark mx-auto pt-4 text-center">
+						The provided URL: <a href={{url}} target="_blank">{{ url }}</a>
+					</h2>
+					<br />
+					<h3 class="text-dark mx-auto text-center" id="prediction"></h3>
+					<br />
+					<button
+						class="form2__button"
+						id="button2"
+						role="button"
+						onclick="window.open('{{url}}')"
+						target="_blank"
+					>
+						Proceed to site
+					</button>
+				</div>
+			</div>
+			<br />
+		</div>
+
+		<!-- JavaScript -->
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"
+		></script>
+		<script>
+			let rate = "{{score}}";
+			let num = rate * 100;
+			let percentage = num.toString();
+			if (rate <= 1 && rate >= 0.5) {
+				let result = "Rating is " + percentage + "%, safety is above required";
+				document.getElementById("prediction").innerHTML = result;
+				document.getElementById("form2").style.display = "flex";
+			} else if (0 <= rate && rate < 0.5) {
+				let result = "Rating is " + percentage + "%, safety is below required";
+				document.getElementById("prediction").innerHTML = result;
+				document.getElementById("form2").style.display = "flex";
+			}
+		</script>
+	</body>
+</html>
