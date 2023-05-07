@@ -20,7 +20,6 @@ class getFeatures:
         self.urlparse = ""
         self.response = ""
         self.soup = ""
-
         try:
             self.response = requests.get(url)
             self.soup = BeautifulSoup(self.response.text, 'html.parser')
@@ -42,7 +41,7 @@ class getFeatures:
         self.features.append(self.redirecting())
         self.features.append(self.prefixSuffix())
         self.features.append(self.SubDomains())
-        self.features.append(self.Hppts())
+        self.features.append(self.Https())
         self.features.append(self.DomainRegLen())
         self.features.append(self.Favicon())
 
@@ -129,7 +128,7 @@ class getFeatures:
         return -1
 
     # 8.HTTPS
-    def Hppts(self):
+    def Https(self):
         try:
             https = self.urlparse.scheme
             if 'https' in https:
@@ -242,7 +241,6 @@ class getFeatures:
                 if "#" in a['href'] or "javascript" in a['href'].lower() or "mailto" in a['href'].lower() or not (self.url in a['href'] or self.domain in a['href']):
                     unsafe = unsafe + 1
                 i = i + 1
-
             try:
                 percentage = unsafe / float(i) * 100
                 if percentage < 31.0:

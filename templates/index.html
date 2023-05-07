@@ -19,7 +19,7 @@
 		<div class="container-fluid">
 			<div class="row main">
 				<div
-					class="form1 col-md-6 col-12 d-flex flex-column align-items-center justify-content-around"
+					class="form1 col-md-5 col-12 d-flex flex-column align-items-center justify-content-around"
 					id="form1"
 				>
 					<h2 class="text-center pt-4 text-dark">PHISHING DETECTION</h2>
@@ -33,21 +33,20 @@
 							placeholder="Enter URL"
 							required
 						/>
-						<button class="form1__button" role="button">Analyze</button>
+						<button class="form1__button" role="button">Analyze <img src="https://www.nicepng.com/png/full/9-97633_right-arrow-white-png-right-arrow-png-white.png" height="10px" style="margin-left:5px;"/></button>
 					</form>
 				</div>
 
 				<div
-					class="form2 col-md-6 col-12 flex-column align-items-center"
+					class="form2 col-md-5 col-12 flex-column align-items-center"
 					id="form2"
 				>
 					<h2 class="text-dark mx-auto pt-4 text-center">
 						The provided URL: 
 					</h2>
-                    <a href={{url}} target="_blank">{{ url }}</a>
+                    <h6 style="text-align: center; color: red" href={{url}} target="_blank">{{ url }}</a>
 					<br />
 					<h3 class="text-dark mx-auto text-center" id="prediction"></h3>
-					<br />
 					<button
 						class="form2__button"
 						id="button2"
@@ -59,7 +58,17 @@
 					</button>
 				</div>
 			</div>
-			<br />
+			<div id="features__container" class="features__container container flex flex-column mx-auto">
+				<h1 class="text-center pt-3">Feature predictions</h1>
+				<h4 class="text-center pt-3">Phishing (-1) | Suspicious (0) | Safe (1)</h4>
+				<div style="padding: 20px"> 
+					<ul>
+				{% for item in featuresFull %} 
+				<li class="nobull flex row justify-content-between px-5"><h3 class="text-end">{{ item[0] }}</h3><h3 class="text-end"> {{ item[1] }}</h3> </li> <hr>
+				{% endfor %}
+			</ul>
+				</div>
+			</div>
 		</div>
 
 		<!-- JavaScript -->
@@ -79,17 +88,28 @@
 			crossorigin="anonymous"
 		></script>
 		<script>
+			 y=['UsingIP', 'LongURL', 'ShortURL', 'Symbol@', 'Redirecting//',
+       'PrefixSuffix-', 'SubDomains', 'HTTPS', 'DomainRegLen', 'Favicon',
+       'NonStdPort', 'HTTPSDomainURL', 'RequestURL', 'AnchorURL',
+       'LinksInScriptTags', 'ServerFormHandler', 'InfoEmail', 'AbnormalURL',
+       'WebsiteForwarding', 'StatusBarCust', 'DisableRightClick',
+       'UsingPopupWindow', 'IframeRedirection', 'AgeofDomain', 'DNSRecording',
+       'WebsiteTraffic', 'PageRank', 'GoogleIndex', 'LinksPointingToPage',
+       'StatsReport']
 			let rate = "{{score}}";
+			console.log(rate)
 			let num = rate * 100;
-			let percentage = num.toString();
+			let percentage = num.toString().slice(0, 5);
 			if (rate <= 1 && rate >= 0.5) {
 				let result = "Rating is " + percentage + "%, safety is above required";
 				document.getElementById("prediction").innerHTML = result;
 				document.getElementById("form2").style.display = "flex";
+				document.getElementById("features__container").style.display = "flex";
 			} else if (0 <= rate && rate < 0.5) {
 				let result = "Rating is " + percentage + "%, safety is below required";
 				document.getElementById("prediction").innerHTML = result;
 				document.getElementById("form2").style.display = "flex";
+				document.getElementById("features__container").style.display = "flex";
 			}
 		</script>
 	</body>

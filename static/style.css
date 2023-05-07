@@ -1,15 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 800;
 }
 
 body {
 	background: #f9f7f7;
 	color: #fff;
+	background-image: url("wave.png");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .main {
-	height: 80vh;
+	height: 100vh;
 }
 
 form {
@@ -26,7 +33,7 @@ form {
 	box-shadow: 0 4px 30px rgba(46, 57, 124, 0.337);
 	backdrop-filter: blur(6.3px);
 	-webkit-backdrop-filter: blur(6.3px);
-	border: 1px solid rgba(0, 0, 0, 0.13);
+	border: 1px solid rgba(255, 255, 255, 0.13);
 }
 
 .form2 {
@@ -49,8 +56,8 @@ form {
 	color: #333;
 	font-size: 1.2rem;
 	padding: 1.5rem 2rem;
-	margin-bottom: 40px;
-	border-radius: 0.2rem;
+	margin-bottom: 30px;
+	border-radius: 0.6rem;
 	background-color: #ecf2ff;
 	border: none;
 	width: 100%;
@@ -76,4 +83,26 @@ form {
 	width: 100%;
 	margin-bottom: 20px;
 	padding: 20px 0;
+}
+
+@media (max-width: 992px) {
+	.form1{
+		width: 90%;
+	}
+.form2{
+	width: 90%;
+	margin-top: 30px;
+}
+}
+
+.features__container{
+background-color: #F1F6F9;
+color: black;
+border-radius: 15px;
+margin-bottom: 20px;
+display: none;
+}
+
+.nobull{
+	list-style: none;
 }
