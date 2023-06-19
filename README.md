@@ -1,6 +1,10 @@
 <h1>Phishing detection</h1>
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/43356852/234099623-b877396a-3dd0-4366-a3eb-57773ab79c53.png">
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/43356852/234099823-565f5bad-a2ec-4b98-b27b-4bb0a15b298a.png">
+<img width="308" alt="image" src="https://github.com/scry-monsters/Phishing-Detection/assets/43356852/a486f801-7aea-472a-b7f1-c69d79ffe84e">
+<img width="308" alt="image" src="https://github.com/scry-monsters/Phishing-Detection/assets/43356852/89cb5908-39a3-43b2-8ef8-7bd44965ccfd">
+<h1>Developer Mode Page</h1>
+<img width="310" alt="image" src="https://github.com/scry-monsters/Phishing-Detection/assets/43356852/2c24a659-3d91-48d4-92e2-59c84d67876b">
+<img width="309" alt="image" src="https://github.com/scry-monsters/Phishing-Detection/assets/43356852/b685cf1b-2d12-4f30-b3bf-42200018dd76">
+<h1>Overview</h1>
 <p>Phishing is a cybercrime in which a target or targets are contacted by email, telephone or text message by someone posing as a legitimate institution to lure individuals into providing sensitive data such as personally identifiable information, banking and credit card details, and passwords. The information is then used to access important accounts and can result in identity theft and financial loss.</p>
 <p>One of the most successful methods for preventing phishing attacks is Machine Learning. Most phishing attacks have same characteristics or features. With the help of supervised machine learning we can detect these patterns and prevent users falling victim to these types of attacks.</p>
 </br>
